@@ -1,0 +1,16 @@
+{
+  "name": "@dcby/smtp-receiver",
+  "version": "0.0.1",
+  "description": "SMTP receive module.",
+  "main": "./dst/index.js",
+  "typings": "./dst/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "dcby",
+  "license": "BSD-3-Clause",
+  "devDependencies": {
+    "source-map-support": "^0.4.0"
+  },
+  "dependencies": {}
+}

@@ -1,0 +1,5 @@
+.vscode/
+dst/
+node_modules/
+typings/
+typings.json

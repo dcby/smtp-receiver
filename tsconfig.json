@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+		"target": "es6",
+		"sourceMap": true,
+		"rootDir": "src",
+		"outDir": "dst",
+		"module": "commonjs",
+		"newLine": "LF",
+		"declaration": true
+	},
+	"exclude": [
+		"dst",
+		"node_modules",
+		"typings/browser.d.ts",
+		"typings/browser"
+	]
+}
