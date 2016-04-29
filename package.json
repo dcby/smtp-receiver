@@ -12,5 +12,9 @@
   "devDependencies": {
     "source-map-support": "^0.4.0"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dcby/smtp-receiver.git"
+  }
 }
