@@ -2,6 +2,7 @@ import * as net from "net";
 import * as lib from "./lib";
 import * as t from "./types";
 import {SmtpSession} from "./SmtpSession";
+import {default as defaultMware} from "./middleware/default";
 
 export default class Receiver {
 	private _config: any;
@@ -42,7 +43,7 @@ export default class Receiver {
 
 	private nextBuilder(context: t.IContext, input: t.IInput, reply: t.IReply): t.NextFunc {
 		let idx = 0;
-		let mware = this._mware;
+		let mware = this._mware.length ? this._mware : [defaultMware];
 
 		return function next(): Promise<void> {
             let func = mware[idx++];
