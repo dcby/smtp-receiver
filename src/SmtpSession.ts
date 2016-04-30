@@ -1,13 +1,16 @@
 import {Socket} from "net";
 import {Loop, ILoopEvent} from "./Loop";
 import * as t from "./types";
+import * as mod from "./";
 
 export class SmtpSession {
 	private _nextBuilder: t.NextBuilderFunc;
 	private _context: t.IContext;
 	private _isData: boolean;
+	private _log: mod.Log;
 
 	constructor(config: { id: string, sock: Socket, nextBuilder: t.NextBuilderFunc }) {
+		this._log = new mod.Log("recv-sess");
 		this._context = {
 			id: config.id,
 			sock: config.sock
@@ -30,7 +33,7 @@ export class SmtpSession {
 						name: getCommand(ev.command),
 						raw: ev.command
 					};
-					console.log(`[${this._context.id}] >> ${input.command.raw}`);
+					this._log.info(`[${this._context.id}] >> ${input.command.raw}`);
 				}
 			}
 			else if ("data" in ev || "eod" in ev) {
@@ -45,7 +48,7 @@ export class SmtpSession {
 					raw: null,
 					overflow: true
 				};
-				console.log(`[${this._context.id}] >> <truncate command due to overflow>`);
+				this._log.info(`[${this._context.id}] >> <truncate command due to overflow>`);
 			}
 			else
 				throw new Error("Oops!");
@@ -64,7 +67,7 @@ export class SmtpSession {
 			}
 
 			if (reply.code) {
-				console.log(`[${this._context.id}] << ${reply.code} ${reply.text}`);
+				this._log.info(`[${this._context.id}] << ${reply.code} ${reply.text}`);
 				this._context.sock.write(`${reply.code} ${reply.text}\r\n`, "ascii");
 			}
 
