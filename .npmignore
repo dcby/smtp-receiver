@@ -1,4 +1,4 @@
 .vscode/
+dst/
 typings/
-tsconfig.json
 typings.json

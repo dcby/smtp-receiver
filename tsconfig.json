@@ -6,7 +6,8 @@
 		"outDir": "dst",
 		"module": "commonjs",
 		"newLine": "LF",
-		"declaration": true
+		"declaration": true,
+		"pretty": true
 	},
 	"exclude": [
 		"dst",
