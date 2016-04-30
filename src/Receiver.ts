@@ -18,8 +18,10 @@ export default class Receiver {
 
 	run() {
 		let server = net.createServer(this.handleConnection.bind(this));
-		server.listen(this._config.port, this._config.ip,
-			() => console.log(`listen on ${server.localAddress}:${server.localPort}`));
+		server.listen(this._config.port, this._config.ip, () => {
+			let addr = server.address();
+			console.log(`listen on ${addr.address}:${addr.port}`)
+		});
 	}
 
 	private async handleConnection(sock: net.Socket) {
