@@ -1,3 +1,5 @@
 .vscode/
+dst/.tests/
+src/.tests/
 typings/
 typings.json
